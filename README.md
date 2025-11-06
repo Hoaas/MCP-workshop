@@ -15,8 +15,13 @@ Dersom du sitter fast kan du ta en titt på commit-historikken i [solution-branc
     dotnet add package ModelContextProtocol.AspNetCore --prerelease
     dotnet add package Microsoft.Extensions.Hosting
     ```
-3. Bygg løsning og kjør
-4. Opprett noen todos
+3. Kjør db-migrering:
+   ```pwsh
+   dotnet tool install -g dotnet-ef
+   dotnet ef database update
+   ```
+5. Bygg løsning og kjør
+6. Opprett noen todos
 
 ## Oppgave 0: Sett opp MCP
 
@@ -27,7 +32,7 @@ Legg til følgende i `builder` i `Program.cs`:
 ```csharp
 builder.Services
     .AddMcpServer()
-    .HttpTransport() 
+    .WithHttpTransport() 
     .WithToolsFromAssembly();
 ```
 
